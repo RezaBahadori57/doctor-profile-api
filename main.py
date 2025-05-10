@@ -9,7 +9,6 @@ app = FastAPI(
 )
 
 
-# CORS middleware (برای تست از Postman یا مرورگر)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -18,10 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ثبت مسیرهای مربوط به احراز هویت
+
 app.include_router(auth_router, prefix="/api/v1/auth", tags=["Authentication"])
 
-# روت اصلی برای تست
+
 @app.get("/")
 def read_root():
     return {"message": "Doctor Appointment API is running 🚀"}
